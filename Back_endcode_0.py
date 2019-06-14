@@ -2,10 +2,29 @@ from math import *
 
 print("Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide.")
 I0=1.0
-scr_res=int(input('Enter the resolution of the screen {in microns}:'))
-slt_res=int(input('Enter the resolution of the slit {in microns}:'))
-slt_size=int(input('Enter the size of slit {in microns}:'))
-slt_grd=int(slt_size/slt_res)
+
+#SLIT PATTERN DESIGN	
+print('Here, you can choose the slit configuration..!')
+print('You can choose from among the following... \n 1.Single Slit\n 2.Double Slit\n 3.Two Point Source\n 4.Multiple Slit\n 5.Costumized Slit')
+choice=int(input('Enter the one that you want to see:'))
+D=float(input("Enter The distance of the screen from the slit (in cm):"))
+wvlen=float(input("Enter the wavelenght of light being used (in microns):"))
+
+if choice==1:
+	
+elif choice==2:
+	
+elif choice==3:
+	slt_size=int(input('Enter the distance between the slits {in microns}:'))
+	scr_res=500
+	slt_res=50
+elif choice==4:
+	
+elif choice==5:
+	slt_size=int(input('Enter the size of slit {in microns}:'))
+	scr_res=int(input('Enter the resolution of the screen {in microns}:'))
+	slt_res=int(input('Enter the resolution of the slit {in microns}:'))
+	slt_grd=int(slt_size/slt_res)
 
 f=scr_res/slt_res
 g=10000/scr_res
@@ -16,14 +35,9 @@ for i in range(slt_grd):
 	A=[0.0]*slt_grd
 	slit.append(A)
 
-#SLIT PATTERN DESIGN	
-
-
 for i in range(len(slit)):
 	print(slit[i])
 
-D=float(input("Enter The distance of the screen from the slit (in cm):"))
-wvlen=float(input("Enter the wavelenght of light being used (in microns):"))
 
 
 def diff(i,j,x,y):
