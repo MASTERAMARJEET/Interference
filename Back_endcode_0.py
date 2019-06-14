@@ -12,7 +12,6 @@ g=10000/scr_res
 
 slit=[]
 
-for i in range(slt_grd):
 	A=[0.0]*slt_grd
 	slit.append(A)
 
@@ -48,7 +47,7 @@ def func(a,b):
 	return(I)
 
 Screen=[]
-
+jkfjhsdkj
 print('\nNow! You have to enter the size of screen {in mm}.\n Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.\n You can enter a float also.')
 
 scr_size=float(input('Enter the size of the screen:'))
