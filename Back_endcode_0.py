@@ -17,13 +17,7 @@ for i in range(slt_grd):
 	slit.append(A)
 
 #SLIT PATTERN DESIGN	
-'''
-for i in range(len(slit)):
-	for j in range(len(slit)):
-		if (((i-2)**2 + (j-2)**2) < 9):
-			slit[i][j]=I0
 
-'''
 
 for i in range(len(slit)):
 	print(slit[i])
