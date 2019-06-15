@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-white')
+import numpy as np
+
 from math import *
 
 print("Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide.")
@@ -136,3 +140,9 @@ for a in p:
 
 for i in range(len(p)):
 	print(Screen[i])
+
+X,Y = np.meshgrid(p,q)
+
+plt.contourf(X,Y,Screen, cmap='gray')
+plt.colorbar()
+plt.show()
