@@ -5,7 +5,7 @@ I0=1.0
 
 #SLIT PATTERN DESIGN	
 print('Here, you can choose the slit configuration..!')
-print('You can choose from among the following... \n 1.Single Slit\n 2.Double Slit\n 3.Two Point Source\n 4.Multiple Slit\n 5.Costumized Slit')
+print('You can choose from among the following... \n 1.Single Slit\n 2.Double Slit\n 3.Double Dot\n 4.Multiple Slit\n 5.Multiple Dot\n 6.Costumized Slit')
 choice=int(input('Enter the one that you want to see:'))
 D=float(input("Enter The distance of the screen from the slit (in cm):"))
 wvlen=float(input("Enter the wavelenght of light being used (in microns):"))
@@ -14,16 +14,39 @@ slit=[]
 
 Screen=[]
 
-
-
 if choice==1:
 	print('SORRY ! Functionality unavailable for now. !')
 	
 elif choice==2:
-	print('SORRY ! Functionality unavailable for now. !')
+
+	slt_size=int(input('Enter the distance between the two slits {in microns}:'))
+	slt_res=slt_size/3
+	slt_grid=int(slt_size/slt_res)
+
+	A=[0.0]*(slt_grid+1)
+	for i in range(slt_grid*8):
+		slit.append(A)
+		slit[i][0]=I0
+		slit[i][slt_grid]=I0
+
+	print('\nNow! You have to enter the size of screen {in mm}.\n Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.\n You can enter a float also.')
+
+	beta=(wvlen*D*10)/slt_size						# unit -> in mm
+
+	scr_size=beta*10
+	scr_res=(beta*1000)/10
+	scr_grid=int((scr_size*1000)/scr_res)
+
+
+	for i in range(len(slit)):
+		print(slit[i])
+
+	f=scr_res/slt_res
+	g=10000/scr_res
+
 		
 elif choice==3:
-	slt_size=int(input('Enter the distance between the slits {in microns}:'))
+	slt_size=int(input('Enter the distance between the point sources {in microns}:'))
 	slt_res=slt_size/10
 	slt_grid=int(slt_size/slt_res)
 
@@ -51,8 +74,11 @@ elif choice==3:
 
 elif choice==4:
 	print('SORRY ! Functionality unavailable for now. !')
-	
+
 elif choice==5:
+	print('SORRY ! Functionality unavailable for now. !')
+	
+elif choice==6:
 	slt_size=int(input('Enter the size of slit {in microns}:'))
 	slt_res=int(input('Enter the resolution of the slit {in microns}:'))
 	slt_grid=int(slt_size/slt_res)
@@ -110,4 +136,3 @@ for a in p:
 
 for i in range(len(p)):
 	print(Screen[i])
-
