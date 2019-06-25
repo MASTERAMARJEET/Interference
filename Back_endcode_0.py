@@ -5,7 +5,8 @@ import numpy as np
 from math import *
 
 print('Hello! This is a program which gives you back a interference pattern on\
-		 screen according to the slit that you provide.')
+screen according to the slit that you provide.')
+
 I0=1.0
 
 #SLIT PATTERN DESIGN	
@@ -35,7 +36,7 @@ elif choice==2:
 	slt_grid=int(slt_size/slt_res)
 
 	A=[0.0]*(slt_grid+1)
-	for i in range(slt_grid*4):
+	for i in range(slt_grid*3):
 		slit.append(A)
 		slit[i][0]=I0
 		slit[i][slt_grid]=I0
@@ -136,6 +137,8 @@ elif choice==6:
 	print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
 	print(' You can enter a float also.')
 
+	beta=(wvlen*D*10)/slt_size
+
 	scr_size=float(input('Enter the size of the screen:'))
 	scr_res=int(input('Enter the resolution of the screen {in microns}:'))
 	scr_grid=int((scr_size*1000)/scr_res)
@@ -197,3 +200,4 @@ plt.ylabel('Y axis (in mm)', fontsize='large')
 plt.contourf(X,Y,Screen,30, cmap='gray')
 plt.colorbar()
 plt.show()
+
