@@ -26,21 +26,21 @@ slit=[]
 
 Screen=[]
 
-if choice==1:
+if choice==1:#1.Single Slit
 	print('SORRY ! Functionality unavailable for now. !')
 	
-elif choice==2:
+elif choice==2:#2.Double Slit
 
 	slt_size=int(input('Enter the distance between the two slits {in microns}:'))
-	slt_res=slt_size/3
+	slt_res=slt_size/4
 	slt_grid=int(slt_size/slt_res)
 
 	A=[0.0]*(slt_grid+1)
-	for i in range(slt_grid*3):
+	for i in range(slt_grid*2):
 		slit.append(A)
 		slit[i][0]=I0
 		slit[i][slt_grid]=I0
-
+		
 	print('\nNow! You have to enter the size of screen {in mm}.')
 	print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
 	print(' You can enter a float also.')
@@ -59,7 +59,7 @@ elif choice==2:
 	g=10000/slt_res
 
 		
-elif choice==3:
+elif choice==3:#3.Double Dot
 	slt_size=int(input('Enter the distance between the point sources {in microns}:'))
 	slt_res=slt_size/10
 	slt_grid=int(slt_size/slt_res)
@@ -88,10 +88,10 @@ elif choice==3:
 	g=10000/slt_res
 
 
-elif choice==4:
+elif choice==4:#4.Multiple Slit
 	print('SORRY ! Functionality unavailable for now. !')
 
-elif choice==5:
+elif choice==5:#5.Multiple Dot
 	print('This is the multiple dot option. Here you can choose the number of point sources to have.')
 	print('It is recommended to keep it to a max of 5!. ')
 	num=int(input('Enter the number of point sources you want:'))
@@ -124,7 +124,7 @@ elif choice==5:
 	g=10000/slt_res
 
 	
-elif choice==6:
+elif choice==6:#6.Costumized Slit
 	slt_size=int(input('Enter the size of slit {in microns}:'))
 	slt_res=int(input('Enter the resolution of the slit {in microns}:'))
 	slt_grid=int(slt_size/slt_res)
@@ -164,7 +164,8 @@ def func(a,b):
 				for y in range(j,len(A)):
 					if (x,y) != (i,j):
 						if slit[x][y]!=0.0 and  slit[i][j]!=0.0:
-							I += slit[x][y] + slit[i][j] + 2*sqrt(slit[x][y]*slit[i][j])*phase(i,j,x,y)	
+							I +=  (slit[x][y]/((slt_res**2)*((D*g)**2 + (a*f-x)**2 + (b*f-y)**2)) + slit[i][j]/((slt_res**2)*((D*g)**2 + (a*f-i)**2 + (b*f-j)**2)) 
+								+ 2*sqrt((slit[x][y]*slit[i][j])/((slt_res**4)*((D*g)**2 + (a*f-x)**2 + (b*f-y)**2)*((D*g)**2 + (a*f-i)**2 + (b*f-j)**2)))*phase(i,j,x,y))
 	return(I)
 
 
