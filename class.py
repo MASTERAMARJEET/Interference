@@ -513,7 +513,12 @@ class Ui_MainWindow(object):
 		def func(x_point,y_point):
 			I = 0.0
 			for i in range(len(Slit)):
-
+				for j in range(len(Slit[0])):
+					for x in range(i,len(Slit)):
+						for y in range(j,len(Slit[0])):
+							if (x,y) !=  (i,j):
+								if Slit[x][y] != 0.0 and  Slit[i][j] != 0.0:
+									I +=  4*Slit[x][y]*((cos(Theta(i,j,x,y)))**2)
 			return(I)
 
 		p = range(-scr_grid,scr_grid+1)
