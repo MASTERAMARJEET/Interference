@@ -513,8 +513,7 @@ class Ui_MainWindow(object):
 		def func(x_point,y_point):
 			I = 0.0
 			for i in range(len(Slit)):
-				for j in range(len(Slit[i])):
-					
+
 			return(I)
 
 		p = range(-scr_grid,scr_grid+1)

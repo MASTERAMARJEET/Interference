@@ -151,7 +151,7 @@ elif choice==6:#6.Costumized Slit
 
 
 
-def phase(i,j,x,y):
+def delta(i,j,x,y):
 	variable= cos((2*pi*slt_res*abs(sqrt((D*g)**2 + (a*f-i)**2 + (b*f-j)**2) 
 									- sqrt((D*g)**2 + (a*f-x)**2 + (b*f-y)**2)))/wvlen)
 	return variable
@@ -164,8 +164,7 @@ def func(a,b):
 				for y in range(j,len(A)):
 					if (x,y) != (i,j):
 						if slit[x][y]!=0.0 and  slit[i][j]!=0.0:
-							I +=  (slit[x][y]/((slt_res**2)*((D*g)**2 + (a*f-x)**2 + (b*f-y)**2)) + slit[i][j]/((slt_res**2)*((D*g)**2 + (a*f-i)**2 + (b*f-j)**2)) 
-								+ 2*sqrt((slit[x][y]*slit[i][j])/((slt_res**4)*((D*g)**2 + (a*f-x)**2 + (b*f-y)**2)*((D*g)**2 + (a*f-i)**2 + (b*f-j)**2)))*phase(i,j,x,y))
+							I +=  (slit[x][y] + slit[i][j] + 2*sqrt(slit[x][y]*slit[i][j])*delta(i,j,x,y))
 	return(I)
 
 
