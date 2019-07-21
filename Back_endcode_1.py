@@ -35,7 +35,7 @@ I0 = 1.0
 
 Slit_option = int(input('Enter the one that you want to see:')) 
 Distance = float(input("Enter The distance of the screen from the slit (in cm):"))
-Wavelenght = float(input("Enter the wavelenght of light being used (in microns):"))
+Wavelenght = float(input("Enter the wavelength of light being used (in microns):"))
 
 Slit = []
 
