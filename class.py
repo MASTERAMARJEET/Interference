@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 import numpy as np
+# import time
+
 
 from math import cos, pi, sqrt
 
@@ -450,7 +452,22 @@ class Ui_MainWindow(object):
 			pass
 
 		elif Slit_option == 'DOUBLE SLIT':
-			pass
+			class case1(configurator):
+				
+				def create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res):
+					configurator.create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res)
+
+					self.Slit_Grid = int(slt_sep/slt_res)
+					
+					Slit = []
+					for i in range(10):
+							Slit.append([0.0]*(self.Slit_Grid + 1))
+							Slit[i][0] = I0
+							Slit[i][-1] = I0
+					self.slit = Slit
+					return self.slit 
+
+			S1 = case1(Slit_option)
 		 
 		elif Slit_option == 'DOUBLE POINT':
 			class case2(configurator):
@@ -502,24 +519,25 @@ class Ui_MainWindow(object):
 		beta = (Wavelength*Distance*10)/Slit_Separation
 		print(beta)
 
+		W = em_wave('Source', Wavelength*0.001)
 
 		Screen = []
 
 
-		def Theta(i,j,x,y):
-			variable =  pi*Slit_Plane_Resolution*abs(sqrt((Distance*g)**2 + (x_point*f-i)**2 + (y_point*f-j)**2) - sqrt((Distance*g)**2 + (x_point*f-x)**2 + (y_point*f-y)**2))/Wavelength
-			return variable
+		# def Theta(i,j,x,y):
+		# 	variable =  pi*Slit_Plane_Resolution*abs(sqrt((Distance*g)**2 + (x_point*f-i)**2 + (y_point*f-j)**2) - sqrt((Distance*g)**2 + (x_point*f-x)**2 + (y_point*f-y)**2))/Wavelength
+		# 	return variable
 
 		def func(x_point,y_point):
-			I = 0.0
+			T = np.array([0.0, 0.0, 0.0])
 			for i in range(len(Slit)):
 				for j in range(len(Slit[0])):
-					for x in range(i,len(Slit)):
-						for y in range(j,len(Slit[0])):
-							if (x,y) !=  (i,j):
-								if Slit[x][y] != 0.0 and  Slit[i][j] != 0.0:
-									I +=  4*Slit[x][y]*((cos(Theta(i,j,x,y)))**2)
+					if Slit[i][j] != 0.0:
+						R = [x_point*Screen_Resoution-j*Slit_Plane_Resolution*0.001, y_point*Screen_Resoution-i*Slit_Plane_Resolution*0.001, Distance*10]
+						T += W.Wave_eq(R)
+			I = np.dot(T,T)
 			return(I)
+
 
 		p = range(-scr_grid,scr_grid+1)
 		q = range(-scr_grid,scr_grid+1)
@@ -529,7 +547,6 @@ class Ui_MainWindow(object):
 			for y_point in q:
 				M.append(func(x_point,y_point))
 			Screen.append(M)
-			print(f'Progress Bar:{len(Screen)/len(p)*100} %')
 			ui.Progress_Bar.setProperty("value", len(Screen)/len(p)*100)
 
 
@@ -569,6 +586,47 @@ class configurator:
 
 		return self.slit
 
+class em_wave():
+	
+	c = 3*(10**11)					#unit-> mm/sec
+	E = np.array([1, 1, 1])
+	phi = 0
+	k_unit = np.array([0,0,1])		#unit-> 1/mm
+	r = np.array([0,0,1])			#unit-> 1/mm
+	# t = time.time()							#unit-> sec
+	t = 0
+	
+	def __init__(self,name,wavelength):
+		self.wave_name = name
+		self.wavelength = wavelength 				#unit-> mm
+		self.frequency = self.c/self.wavelength
+		self.k = (2*pi/self.wavelength)*self.k_unit
+		self.omega = 2*pi*self.frequency
+	
+	def __repr__(self):
+		return 'This is a wave object which can given all the proprties that a wave should have.For more info. type object.help()'
+
+	def set_eq(self,E,phi):
+		self.E = np.array(E)
+		self.phi = phi
+		self.wave_eq = np.array([P*cos(np.dot(self.k,self.r) - self.omega*self.t + self.phi) for P in self.E])
+
+	def Wave_eq(self,r):
+		self.r = np.array(r)/sqrt(sum([p**2 for p in self.r]))
+		self.wave_eq = (np.array([P*cos(np.dot(self.k,self.r) - self.omega*self.t + self.phi) for P in self.E])/sqrt(sum([p**2 for p in self.r])))
+		# print(cos(np.dot(self.k,self.r)))
+		return self.wave_eq
+
+	def help(self):
+		print('This obect has following properties as of now:')
+		print(f'wave_name:{self.wave_name}')
+		print(f'wavelength:{self.wavelength}')
+		print(f'frequency:{self.frequency}')
+		print(f'E:{self.E}')
+		print(f'k:{self.k}')
+		print(f'r:{self.r}')
+		print(f'phi:{self.phi}')
+		print(f'wave_eq:{self.wave_eq}')
 				
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
