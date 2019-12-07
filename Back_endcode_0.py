@@ -184,10 +184,7 @@ for a in p:
 	for b in q:
 		M.append(func(a,b))
 	Screen.append(M)
-'''
-for i in range(len(p)):
-	print(Screen[i])
-'''
+
 xtics=[i*(scr_res/1000) for i in p]
 ytics=[j*(scr_res/1000) for j in q]
 
