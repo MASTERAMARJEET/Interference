@@ -1,19 +1,17 @@
+import sys
+from PyQt5 import QtCore, QtGui, QtWidgets
+from math import cos, pi, sqrt
+import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
-import numpy as np
 # import time
 
 
-from math import cos, pi, sqrt
-
 # GUI settings Start:
 
-import sys 
-
-from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
-    
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Simulator")
         MainWindow.resize(998, 600)
@@ -25,7 +23,8 @@ class Ui_MainWindow(object):
         self.Pic_box0.setGeometry(QtCore.QRect(0, 0, 1010, 600))
         self.Pic_box0.setText("")
         self.Pic_box0.setObjectName("Pic_box")
-        pic0 = QtGui.QPixmap("C:\\Users\\Amarjeet\\Documents\\GitHub\\Interference\\GUI\\B0.png")
+        pic0 = QtGui.QPixmap(
+            "C:\\Users\\Amarjeet\\Documents\\GitHub\\Interference\\GUI\\B0.png")
         pic0 = pic0.scaled(self.Pic_box0.width(), self.Pic_box0.height())
         self.Pic_box0.setPixmap(pic0)
         self.Pic_box0.setAlignment(QtCore.Qt.AlignCenter)
@@ -43,7 +42,8 @@ class Ui_MainWindow(object):
         self.Pic_box.setGeometry(QtCore.QRect(20, 50, 951, 491))
         self.Pic_box.setText("")
         self.Pic_box.setObjectName("Pic_box")
-        pic = QtGui.QPixmap("C:\\Users\\Amarjeet\\Documents\\GitHub\\Interference\\GUI\\background4.png")
+        pic = QtGui.QPixmap(
+            "C:\\Users\\Amarjeet\\Documents\\GitHub\\Interference\\GUI\\background4.png")
         pic = pic.scaled(self.Pic_box.width(), self.Pic_box.height())
         self.Pic_box.setPixmap(pic)
         self.Pic_box.setAlignment(QtCore.Qt.AlignCenter)
@@ -92,7 +92,8 @@ class Ui_MainWindow(object):
         self.Screen_Size_label.setTextFormat(QtCore.Qt.PlainText)
         self.Screen_Size_label.setObjectName("Screen_Size_label")
         self.Screen_Resolution_label = QtWidgets.QLabel(self.main_frame)
-        self.Screen_Resolution_label.setGeometry(QtCore.QRect(30, 364, 342, 36))
+        self.Screen_Resolution_label.setGeometry(
+            QtCore.QRect(30, 364, 342, 36))
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
@@ -158,16 +159,19 @@ class Ui_MainWindow(object):
         self.Slit_Separation_label.setTextFormat(QtCore.Qt.PlainText)
         self.Slit_Separation_label.setObjectName("Slit_Separation_label")
         self.Slit_Plane_Resolution_label = QtWidgets.QLabel(self.main_frame)
-        self.Slit_Plane_Resolution_label.setGeometry(QtCore.QRect(30, 269, 342, 36))
+        self.Slit_Plane_Resolution_label.setGeometry(
+            QtCore.QRect(30, 269, 342, 36))
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.Slit_Plane_Resolution_label.setFont(font)
-        self.Slit_Plane_Resolution_label.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Slit_Plane_Resolution_label.setFrameShape(
+            QtWidgets.QFrame.WinPanel)
         self.Slit_Plane_Resolution_label.setTextFormat(QtCore.Qt.PlainText)
-        self.Slit_Plane_Resolution_label.setObjectName("Slit_Plane_Resolution_label")
+        self.Slit_Plane_Resolution_label.setObjectName(
+            "Slit_Plane_Resolution_label")
         self.Slit_Size = QtWidgets.QSpinBox(self.main_frame)
         self.Slit_Size.setEnabled(True)
         self.Slit_Size.setGeometry(QtCore.QRect(390, 172, 142, 36))
@@ -251,17 +255,21 @@ class Ui_MainWindow(object):
         self.Slit_Option.addItem("")
         self.Slit_Option.addItem("")
         self.Slit_Plane_Resolution_unit_2 = QtWidgets.QLabel(self.main_frame)
-        self.Slit_Plane_Resolution_unit_2.setGeometry(QtCore.QRect(555, 279, 114, 20))
+        self.Slit_Plane_Resolution_unit_2.setGeometry(
+            QtCore.QRect(555, 279, 114, 20))
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.Slit_Plane_Resolution_unit_2.setFont(font)
-        self.Slit_Plane_Resolution_unit_2.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.Slit_Plane_Resolution_unit_2.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.Slit_Plane_Resolution_unit_2.setFrameShape(
+            QtWidgets.QFrame.NoFrame)
+        self.Slit_Plane_Resolution_unit_2.setFrameShadow(
+            QtWidgets.QFrame.Plain)
         self.Slit_Plane_Resolution_unit_2.setTextFormat(QtCore.Qt.PlainText)
-        self.Slit_Plane_Resolution_unit_2.setObjectName("Slit_Plane_Resolution_unit_2")
+        self.Slit_Plane_Resolution_unit_2.setObjectName(
+            "Slit_Plane_Resolution_unit_2")
         self.Screen_Size_unit = QtWidgets.QLabel(self.main_frame)
         self.Screen_Size_unit.setGeometry(QtCore.QRect(555, 327, 103, 20))
         font = QtGui.QFont()
@@ -275,7 +283,8 @@ class Ui_MainWindow(object):
         self.Screen_Size_unit.setTextFormat(QtCore.Qt.PlainText)
         self.Screen_Size_unit.setObjectName("Screen_Size_unit")
         self.Screen_Resolution_unit = QtWidgets.QLabel(self.main_frame)
-        self.Screen_Resolution_unit.setGeometry(QtCore.QRect(555, 375, 103, 20))
+        self.Screen_Resolution_unit.setGeometry(
+            QtCore.QRect(555, 375, 103, 20))
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
@@ -323,7 +332,8 @@ class Ui_MainWindow(object):
         self.Slit_Size_unit.setTextFormat(QtCore.Qt.PlainText)
         self.Slit_Size_unit.setObjectName("Slit_Size_unit")
         self.Slit_Plane_Resolution_unit = QtWidgets.QLabel(self.main_frame)
-        self.Slit_Plane_Resolution_unit.setGeometry(QtCore.QRect(555, 230, 114, 20))
+        self.Slit_Plane_Resolution_unit.setGeometry(
+            QtCore.QRect(555, 230, 114, 20))
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
@@ -333,7 +343,8 @@ class Ui_MainWindow(object):
         self.Slit_Plane_Resolution_unit.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Slit_Plane_Resolution_unit.setFrameShadow(QtWidgets.QFrame.Plain)
         self.Slit_Plane_Resolution_unit.setTextFormat(QtCore.Qt.PlainText)
-        self.Slit_Plane_Resolution_unit.setObjectName("Slit_Plane_Resolution_unit")
+        self.Slit_Plane_Resolution_unit.setObjectName(
+            "Slit_Plane_Resolution_unit")
         self.Progress_label = QtWidgets.QLabel(self.main_frame)
         self.Progress_label.setGeometry(QtCore.QRect(725, 30, 201, 30))
         font = QtGui.QFont()
@@ -363,7 +374,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.Slit_Option.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         self.Slit_Option.currentIndexChanged.connect(self.disable)
         self.Confirm_button.clicked.connect(self.param)
         self.Simulate_button.clicked.connect(self.main)
@@ -372,10 +383,9 @@ class Ui_MainWindow(object):
         x = self.Slit_Option.currentIndex()
 
         if x != 0:
-            self.Slit_Separation.setEnabled(True)      
+            self.Slit_Separation.setEnabled(True)
         else:
             self.Slit_Separation.setEnabled(False)
-
 
         if x == 0 or x == 5:
             self.Slit_Size.setEnabled(True)
@@ -392,50 +402,70 @@ class Ui_MainWindow(object):
         scr_sz = float(self.Screen_Size.text())
         scr_res = float(self.Screen_Resolution.text())
 
-        return configure,D,wvlen,slt_sz,slt_sep,slt_res,scr_sz,scr_res
+        return configure, D, wvlen, slt_sz, slt_sep, slt_res, scr_sz, scr_res
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("Simulator", "Simulator"))
-        self.Intro.setText(_translate("Simulator", "Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide."))
-        self.Confirm_button.setText(_translate("Simulator", "Confirm Parameters"))
+        self.Intro.setText(_translate(
+            "Simulator", "Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide."))
+        self.Confirm_button.setText(_translate(
+            "Simulator", "Confirm Parameters"))
         self.Simulate_button.setText(_translate("Simulator", "Simulate"))
-        self.Screen_Size_label.setText(_translate("Simulator", "Screen Size :"))
-        self.Screen_Resolution_label.setText(_translate("Simulator", "Screen Resolution :"))
-        self.Distance_label.setText(_translate("Simulator", "Distance Of the Screen from the slit :"))
-        self.Wavelength_label.setText(_translate("Simulator", "Wavelength of light being used :"))
+        self.Screen_Size_label.setText(
+            _translate("Simulator", "Screen Size :"))
+        self.Screen_Resolution_label.setText(
+            _translate("Simulator", "Screen Resolution :"))
+        self.Distance_label.setText(_translate(
+            "Simulator", "Distance Of the Screen from the slit :"))
+        self.Wavelength_label.setText(_translate(
+            "Simulator", "Wavelength of light being used :"))
         self.Slit_Size_label.setText(_translate("Simulator", "Slit Size :"))
-        self.Slit_Option_label.setText(_translate("Simulator", "Slit Configuration :"))
-        self.Slit_Separation_label.setText(_translate("Simulator", "Separation between Slits:"))
-        self.Slit_Plane_Resolution_label.setText(_translate("Simulator", "Slit Resolution :"))
-        self.Wavelength.setWhatsThis(_translate("Simulator", "Wavelenght of light being used"))
-        self.Wavelength.setAccessibleName(_translate("Simulator", "Wavelength"))
-        self.Wavelength.setAccessibleDescription(_translate("Simulator", "Wavelenght of light being used"))
+        self.Slit_Option_label.setText(
+            _translate("Simulator", "Slit Configuration :"))
+        self.Slit_Separation_label.setText(_translate(
+            "Simulator", "Separation between Slits:"))
+        self.Slit_Plane_Resolution_label.setText(
+            _translate("Simulator", "Slit Resolution :"))
+        self.Wavelength.setWhatsThis(_translate(
+            "Simulator", "Wavelenght of light being used"))
+        self.Wavelength.setAccessibleName(
+            _translate("Simulator", "Wavelength"))
+        self.Wavelength.setAccessibleDescription(
+            _translate("Simulator", "Wavelenght of light being used"))
         self.Distance.setAccessibleName(_translate("Simulator", "Distance"))
-        self.Slit_Option.setWhatsThis(_translate("Simulator", "Slit Configuration"))
+        self.Slit_Option.setWhatsThis(
+            _translate("Simulator", "Slit Configuration"))
         self.Slit_Option.setItemText(1, _translate("Simulator", "DOUBLE SLIT"))
-        self.Slit_Option.setItemText(2, _translate("Simulator", "DOUBLE POINT"))
+        self.Slit_Option.setItemText(
+            2, _translate("Simulator", "DOUBLE POINT"))
         self.Slit_Option.setItemText(3, _translate("Simulator", "TRIPLE SLIT"))
-        self.Slit_Option.setItemText(4, _translate("Simulator", "TRIPLE POINT"))
-        self.Slit_Option.setItemText(5, _translate("Simulator", "COUSTOMIZED SLIT"))
-        self.Slit_Plane_Resolution_unit_2.setText(_translate("Simulator", "micrometers"))
+        self.Slit_Option.setItemText(
+            4, _translate("Simulator", "TRIPLE POINT"))
+        self.Slit_Option.setItemText(
+            5, _translate("Simulator", "COUSTOMIZED SLIT"))
+        self.Slit_Plane_Resolution_unit_2.setText(
+            _translate("Simulator", "micrometers"))
         self.Screen_Size_unit.setText(_translate("Simulator", "millimeters"))
-        self.Screen_Resolution_unit.setText(_translate("Simulator", "millimeters"))
+        self.Screen_Resolution_unit.setText(
+            _translate("Simulator", "millimeters"))
         self.Distance_unit.setText(_translate("Simulator", "centimeters"))
         self.Waveength_unit.setText(_translate("Simulator", "micrometers"))
         self.Slit_Size_unit.setText(_translate("Simulator", "micrometers"))
-        self.Slit_Plane_Resolution_unit.setText(_translate("Simulator", "micrometers"))
-        self.Progress_label.setText(_translate("MainWindow", "Calculation Progress"))
+        self.Slit_Plane_Resolution_unit.setText(
+            _translate("Simulator", "micrometers"))
+        self.Progress_label.setText(_translate(
+            "MainWindow", "Calculation Progress"))
 
 # GUI settings End:
     @staticmethod
     def main():
 
-        Intro  = 'Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide.'
+        Intro = 'Hello! This is a program which gives you back a interference pattern on screen according to the slit that you provide.'
 
         I0 = 1.0
 
-        Buffer = ui.param() 
+        Buffer = ui.param()
 
         print(Buffer)
 
@@ -446,37 +476,39 @@ class Ui_MainWindow(object):
 
         elif Slit_option == 'DOUBLE SLIT':
             class case1(configurator):
-                
-                def create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res):
-                    configurator.create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res)
+
+                def create_slit(self, slt_sz, slt_sep, slt_res, scr_sz, scr_res):
+                    configurator.create_slit(
+                        self, slt_sz, slt_sep, slt_res, scr_sz, scr_res)
 
                     self.Slit_Grid = int(slt_sep/slt_res)
-                    
+
                     Slit = []
                     for i in range(10):
                         Slit.append([0.0]*(self.Slit_Grid + 1))
                         Slit[i][0] = I0
                         Slit[i][-1] = I0
                     self.slit = Slit
-                    return self.slit 
+                    return self.slit
 
             S1 = case1(Slit_option)
-         
+
         elif Slit_option == 'DOUBLE POINT':
             class case2(configurator):
-                
-                def create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res):
-                    configurator.create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res)
+
+                def create_slit(self, slt_sz, slt_sep, slt_res, scr_sz, scr_res):
+                    configurator.create_slit(
+                        self, slt_sz, slt_sep, slt_res, scr_sz, scr_res)
 
                     self.Slit_Grid = int(slt_sep/slt_res)
-                    
+
                     Slit = []
                     for i in range(1):
                         Slit.append([0.0]*(self.Slit_Grid + 1))
                         Slit[i][0] = I0
                         Slit[i][-1] = I0
                     self.slit = Slit
-                    return self.slit 
+                    return self.slit
 
             S1 = case2(Slit_option)
 
@@ -485,9 +517,10 @@ class Ui_MainWindow(object):
 
         elif Slit_option == 'TRIPLE POINT':
             class case4(configurator):
-                
-                def create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res):
-                    configurator.create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res)
+
+                def create_slit(self, slt_sz, slt_sep, slt_res, scr_sz, scr_res):
+                    configurator.create_slit(
+                        self, slt_sz, slt_sep, slt_res, scr_sz, scr_res)
 
                     self.Slit_Grid = int(slt_sep/slt_res)
 
@@ -495,17 +528,17 @@ class Ui_MainWindow(object):
                     for i in range(1):
                         Slit.append([0.0]*(2*self.Slit_Grid + 1))
                         Slit[i][0] = I0
-                        Slit[i][self.Slit_Grid -2] = I0
+                        Slit[i][self.Slit_Grid - 2] = I0
                         Slit[i][-1] = I0
                     self.slit = Slit
-                    return self.slit 
+                    return self.slit
 
             S1 = case4(Slit_option)
 
+        Slit = S1.create_slit(Slit_Size, Slit_Separation,
+                              Slit_Plane_Resolution, Screen_Size, Screen_Resoution)
 
-        Slit = S1.create_slit(Slit_Size,Slit_Separation,Slit_Plane_Resolution,Screen_Size,Screen_Resoution)
-
-        slt_grid,scr_grid,f,g = S1.Slit_Grid, S1.Screen_Grid, S1.A1, S1.A2
+        slt_grid, scr_grid, f, g = S1.Slit_Grid, S1.Screen_Grid, S1.A1, S1.A2
 
         print(Slit)
         beta = (Wavelength*Distance*10)/Slit_Separation
@@ -515,98 +548,102 @@ class Ui_MainWindow(object):
 
         Screen = []
 
-
-        def Theta(i,j,x,y):
-            variable =  pi*Slit_Plane_Resolution*abs(sqrt((Distance*g)**2 + (x_point*f-i)**2 + (y_point*f-j)**2) - sqrt((Distance*g)**2 + (x_point*f-x)**2 + (y_point*f-y)**2))/Wavelength
+        def Theta(i, j, x, y):
+            variable = pi*Slit_Plane_Resolution*abs(sqrt((Distance*g)**2 + (x_point*f-i)**2 + (
+                y_point*f-j)**2) - sqrt((Distance*g)**2 + (x_point*f-x)**2 + (y_point*f-y)**2))/Wavelength
             return variable
 
-        def func(x_point,y_point):
+        def func(x_point, y_point):
             I = 0.0
             for i in range(len(Slit)):
                 for j in range(len(Slit[i])):
-                    for x in range(i,len(Slit)):
-                        for y in range(j,len(Slit[x])):
-                            if (x,y) != (i,j):
+                    for x in range(i, len(Slit)):
+                        for y in range(j, len(Slit[x])):
+                            if (x, y) != (i, j):
                                 if Slit[x][y] != 0.0 and Slit[i][j] != 0.0:
-                                    I =+ Slit[x][y] + Slit[i][j] + 2*sqrt(Slit[x][y]*Slit[i][j])*(cos(2*Theta(i,j,x,y)))
+                                    I = + \
+                                        Slit[x][y] + Slit[i][j] + 2 * \
+                                        sqrt(Slit[x][y]*Slit[i][j]) * \
+                                        (cos(2*Theta(i, j, x, y)))
                                     # print(x,y,i,j)
             return(I)
 
-        p = range(-scr_grid,scr_grid+1)
-        q = range(-scr_grid,scr_grid+1)
+        p = range(-scr_grid, scr_grid+1)
+        q = range(-scr_grid, scr_grid+1)
 
         for x_point in p:
             M = []
             for y_point in q:
-                M.append(func(x_point,y_point))
+                M.append(func(x_point, y_point))
             Screen.append(M)
             ui.Progress_Bar.setProperty("value", len(Screen)/len(p)*100)
-
 
         xtics = [i*(Screen_Resoution) for i in p]
         ytics = [j*(Screen_Resoution) for j in q]
 
-        X,Y = np.meshgrid(xtics,ytics)
+        X, Y = np.meshgrid(xtics, ytics)
 
+        plt.xlabel('X axis (in mm)', fontsize='large')
+        plt.ylabel('Y axis (in mm)', fontsize='large')
 
-        plt.xlabel('X axis (in mm)', fontsize = 'large')
-        plt.ylabel('Y axis (in mm)', fontsize = 'large')
-
-        plt.contourf(X,Y,Screen,30, cmap = 'gray')
+        plt.contourf(X, Y, Screen, 30, cmap='gray')
         plt.colorbar()
         plt.show()
 
 
 class configurator:
-    def __init__(self,configure):
+    def __init__(self, configure):
         self.configuration = configure
 
-    def create_slit(self,slt_sz,slt_sep,slt_res,scr_sz,scr_res):
-        self.Slit_Size =slt_sz
+    def create_slit(self, slt_sz, slt_sep, slt_res, scr_sz, scr_res):
+        self.Slit_Size = slt_sz
         self.Slit_Separation = slt_sep
         self.Slit_Plane_Resolution = slt_res
         self.Screen_Size = scr_sz
         self.Screen_Resoution = scr_res
-        self.Slit_Grid =int(slt_sz/slt_res)
+        self.Slit_Grid = int(slt_sz/slt_res)
         self.Screen_Grid = int((scr_sz)/scr_res)
         self.A1 = scr_res*1000/slt_res
         self.A2 = 10000/slt_res
-        
+
         Slit = 0.0
         for i in range(2):
-                Slit = [Slit]*(self.Slit_Grid)
+            Slit = [Slit]*(self.Slit_Grid)
         self.slit = Slit
 
         return self.slit
 
+
 class em_wave():
-    
-    c = 3*(10**11)                  #unit-> mm/sec
+
+    c = 3*(10**11)  # unit-> mm/sec
     E = np.array([1, 1, 1])
     phi = 0
-    k_unit = np.array([0,0,1])      #unit-> 1/mm
-    r = np.array([0,0,1])           #unit-> 1/mm
+    k_unit = np.array([0, 0, 1])  # unit-> 1/mm
+    r = np.array([0, 0, 1])  # unit-> 1/mm
     # t = time.time()                           #unit-> sec
     t = 0
-    
-    def __init__(self,name,wavelength):
+
+    def __init__(self, name, wavelength):
         self.wave_name = name
-        self.wavelength = wavelength                #unit-> mm
+        self.wavelength = wavelength  # unit-> mm
         self.frequency = self.c/self.wavelength
         self.k = (2*pi/self.wavelength)*self.k_unit
         self.omega = 2*pi*self.frequency
-    
+
     def __repr__(self):
         return 'This is a wave object which can given all the proprties that a wave should have.For more info. type object.help()'
 
-    def set_eq(self,E,phi):
+    def set_eq(self, E, phi):
         self.E = np.array(E)
         self.phi = phi
-        self.wave_eq = np.array([P*cos(np.dot(self.k,self.r) - self.omega*self.t + self.phi) for P in self.E])
+        self.wave_eq = np.array(
+            [P*cos(np.dot(self.k, self.r) - self.omega*self.t + self.phi) for P in self.E])
 
-    def Wave_eq(self,r):
+    def Wave_eq(self, r):
         self.r = np.array(r)/sqrt(sum([p**2 for p in self.r]))
-        self.wave_eq = (np.array([P*cos(np.dot(self.k,self.r) - self.omega*self.t + self.phi) for P in self.E])/sqrt(sum([p**2 for p in self.r])))
+        self.wave_eq = (np.array([P*cos(np.dot(self.k, self.r) - self.omega*self.t + self.phi)
+                                  for P in self.E])/sqrt(sum([p**2 for p in self.r])))
         # print(cos(np.dot(self.k,self.r)))
         return self.wave_eq
 
@@ -620,12 +657,11 @@ class em_wave():
         print(f'r:{self.r}')
         print(f'phi:{self.phi}')
         print(f'wave_eq:{self.wave_eq}')
-                
+
+
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
 ui.setupUi(MainWindow)
 MainWindow.show()
 sys.exit(app.exec_())
-
-

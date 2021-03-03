@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Calculation Completed")
@@ -26,7 +27,8 @@ class Ui_Form(object):
         self.Progress_label.setClearButtonEnabled(False)
         self.Progress_label.setObjectName("Progress_label")
         self.gridLayout.addWidget(self.Progress_label, 0, 0, 1, 1)
-        self.Calculation_progress = QtWidgets.QProgressBar(self.gridLayoutWidget)
+        self.Calculation_progress = QtWidgets.QProgressBar(
+            self.gridLayoutWidget)
         self.Calculation_progress.setProperty("value", 24)
         self.Calculation_progress.setObjectName("Calculation_progress")
         self.gridLayout.addWidget(self.Calculation_progress, 1, 0, 1, 1)
@@ -36,8 +38,10 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Calculation Completed", "Calculation Completed"))
-        self.Progress_label.setText(_translate("Calculation Completed", "Progress Bar"))
+        Form.setWindowTitle(_translate(
+            "Calculation Completed", "Calculation Completed"))
+        self.Progress_label.setText(_translate(
+            "Calculation Completed", "Progress Bar"))
 
 
 if __name__ == "__main__":
@@ -49,7 +53,7 @@ if __name__ == "__main__":
     Form.show()
 
     for a in range(100):
-        ui.Calculation_progress.setProperty("value",a)
+        ui.Calculation_progress.setProperty("value", a)
 
     sys.exit(app.exec_())
-    
+
