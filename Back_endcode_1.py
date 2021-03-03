@@ -169,9 +169,9 @@ elif Slit_option == 6:  # 6.Costumized Slit
     g = 10000/Slit_Resolution
 
 
-def delta(i, j, x, y):
-    variable = cos((2*pi*Slit_Resolution*abs(sqrt((Distance*g)**2 + (a*f-i)**2 +
-                                                  (b*f-j)**2) - sqrt((Distance*g)**2 + (a*f-x)**2 + (b*f-y)**2)))/Wavelenght)
+def delta(xs1, ys1, xs2, ys2, xS, yS):
+    variable = cos((2*pi*Slit_Resolution*abs(sqrt((Distance*g)**2 + (xS*f-xs1)**2 +
+                                                  (b*f-ys1)**2) - sqrt((Distance*g)**2 + (xS*f-xs2)**2 + (b*f-ys2)**2)))/Wavelenght)
     return variable
 
 
@@ -199,10 +199,10 @@ print('Slit_Size  = ', Slit_Size)
 p = range(-scr_grid, scr_grid+1)
 q = range(-scr_grid, scr_grid+1)
 
-for a in p:
+for xS in p:
     M = []
     for b in q:
-        M.append(func(a, b))
+        M.append(func(xS, b))
     Screen.append(M)
 '''
 for i in range(len(p)):
