@@ -33,7 +33,7 @@ I0 = 1.0
 Slit_option = int(input('Enter the one that you want to see:'))
 Distance = float(
     input("Enter The distance of the screen from the slit (in cm):"))
-Wavelenght = float(
+Wavelength = float(
     input("Enter the wavelength of light being used (in microns):"))
 
 Slit = []
@@ -60,7 +60,7 @@ elif Slit_option == 2:  # 2.Double Slit
     print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
     print(' You can enter a float also.')
 
-    beta = (Wavelenght*Distance*10) / \
+    beta = (Wavelength*Distance*10) / \
         Slit_Size                        # unit -> in mm
 
     Screen_Size = beta*4
@@ -90,7 +90,7 @@ elif Slit_option == 3:  # 3.Double Dot
     print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
     print(' You can enter a float also.')
 
-    beta = (Wavelenght*Distance*10) / \
+    beta = (Wavelength*Distance*10) / \
         Slit_Size                        # unit -> in mm
 
     Screen_Size = beta*3
@@ -127,7 +127,7 @@ elif Slit_option == 5:  # 5.Multiple Dot
     print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
     print(' You can enter a float also.')
 
-    beta = (Wavelenght*Distance*10) / \
+    beta = (Wavelength*Distance*10) / \
         Slit_Size                        # unit -> in mm
 
     Screen_Size = beta*3
@@ -155,7 +155,7 @@ elif Slit_option == 6:  # 6.Costumized Slit
     print(' Note that if you enter 10, the screen will extend from -10 mm to 10 mm on both axes.')
     print(' You can enter a float also.')
 
-    beta = (Wavelenght*Distance*10)/Slit_Size
+    beta = (Wavelength*Distance*10)/Slit_Size
 
     Screen_Size = float(input('Enter the size of the screen:'))
     Screen_Resoution = int(
@@ -169,9 +169,12 @@ elif Slit_option == 6:  # 6.Costumized Slit
     g = 10000/Slit_Resolution
 
 
-def delta(i, j, x, y):
-    variable = cos((2*pi*Slit_Resolution*abs(sqrt((Distance*g)**2 + (a*f-i)**2 +
-                                                  (b*f-j)**2) - sqrt((Distance*g)**2 + (a*f-x)**2 + (b*f-y)**2)))/Wavelenght)
+def delta(slit_cord1, slit_cord2, scrn_cord):
+    xs1, ys1 = slit_cord1
+    xs2, ys2 = slit_cord2
+    xS, yS = scrn_cord
+    variable = cos((2*pi*Slit_Resolution*abs(sqrt((Distance*g)**2 + (xS*f-xs1)**2 +
+                                                  (yS*f-ys1)**2) - sqrt((Distance*g)**2 + (xS*f-xs2)**2 + (yS*f-ys2)**2)))/Wavelength)
     return variable
 
 
@@ -184,7 +187,7 @@ def func(a, b):
                     if (x, y) != (i, j):
                         if Slit[x][y] != 0.0 and Slit[i][j] != 0.0:
                             I += (Slit[x][y] + Slit[i][j] + 2 *
-                                  sqrt(Slit[x][y]*Slit[i][j])*delta(i, j, x, y))
+                                  sqrt(Slit[x][y]*Slit[i][j])*delta((i, j), (x, y), (a, b)))
     return(I)
 
 
